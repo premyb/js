@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>calcul code CRC</legend>
+        <input id="nombreSaisi" required type="number">
+        <button id="calculer">Calculer</button>
+        <br/>
+        <input id="polynome" required type="number">
+        <br/> cliquer pour vérifier uniquement
+        <input id="choix" type="checkbox">
+
+
+
+        <div id="resultat"></div>
+    </fieldset>
+
+
+    <script>
+        var calculer = document.getElementById("calculer");
+        var resultat = document.getElementById("resultat");
+        var choix = document.getElementById("choix");
+
+
+
+        calculer.onclick = function () {
+
+            var nombreSaisi = (document.getElementById("nombreSaisi").value).split('');
+            var G = (document.getElementById("polynome").value).split('');
+            var r = G.length - 1;
+            var M = [];
+
+            for (var i = 0, max = nombreSaisi.length; i < max; i += 1) {
+                M.push(parseInt(nombreSaisi[i]));
+            }
+            if (!choix.checked) {
+                for (var j = 0; j < r; j += 1) {
+                    M.push(0);
+                }
+            }
+
+            console.log(M);
+            //console.log(G);
+            //console.log(M.join(''));
+            //console.log(nombreSaisi.toString(2)); //affichage en binaire
+
+            for (i = 0; i < max; i += 1) {
+                if (M[i] === 1) {
+
+                    for (j = 0; j <= r; j += 1) {
+
+                        //console.log(M[j + i] ^ parseInt(G[j]));
+                        M[j + i] = M[j + i] ^ parseInt(G[j]);
+
+                    }
+                }
+                //console.log(M);
+            }
+            //console.log(M.slice(M.length - r).join(''));
+            resultat.innerHTML = "résultat: " + M.slice(M.length - r).join('')
+
+
+
+        };
+    </script>
+</body>
+
+</html>
