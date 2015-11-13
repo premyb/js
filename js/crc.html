@@ -27,8 +27,6 @@
         var resultat = document.getElementById("resultat");
         var choix = document.getElementById("choix");
 
-
-
         calculer.onclick = function () {
 
             var nombreSaisi = (document.getElementById("nombreSaisi").value).split('');
@@ -46,9 +44,6 @@
             }
 
             console.log(M);
-            //console.log(G);
-            //console.log(M.join(''));
-            //console.log(nombreSaisi.toString(2)); //affichage en binaire
 
             for (i = 0; i < max; i += 1) {
                 if (M[i] === 1) {
